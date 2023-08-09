@@ -1,3 +1,6 @@
+
+
+
 # sql-data-Analytics_data-cleaning-
 SELECT
   purchase_price
