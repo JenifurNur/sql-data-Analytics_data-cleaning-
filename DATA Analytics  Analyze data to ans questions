@@ -13,3 +13,34 @@ WHERE
    #Genre is a column in the dataset, and we only want to select rows where the cell in the Genre column exactly matches "Comedy." Since the data in the Genre column is a string format, we have to use single or double quotations when writing it. And keep in mind that ***capitalization matters here***, so we have to make sure that the letter casing matches the column name exactly. #
 
   Genre = 'Comedy'
+
+#----------------------------------------------------------------------------------------------------#
+
+
+#We can sort this table in lots of different ways using the ORDER BY function.#
+
+SELECT *
+
+FROM
+  `processing-time-on-sql-394721.movie_data.movies`  #The FROM clause specifies the name of the movie database we're using, and the WHERE clause filters the data to include entries whose genre is specified as comedy.#
+
+  # After the WHERE clause, we'll type the column list's name as Genre. Now, we'll add an equal sign after Genre because we only want to include genres that match what we're filtering for. In this case, we're filtering for comedy, so we'll type Comedy between two apostrophes. Now, if you check out the entire query as a whole, you'll notice that we're selecting all columns, and we know it's all columns because that's what an asterisk means...#
+
+WHERE Genre = "Comedy"      
+
+AND Revenue > 300000000      #We'll filter for two conditions at once using the AND filter. Working off the query we've been using, we'll add a second condition in the WHERE clause.# 
+                                      #you wanted to filter by comedy movies and movies that earned over 300 million in the box office. In this case, after the AND function, you'd add the revenue condition by typing Revenue. From there, you'll specify that you only want to return films with revenues over $300 million. To do that, type the greater than sign and then the complete number of 300 million without commas. #
+
+  #The ORDER BY command is usually the last clause in your query. Back to the actual sorting! We'll type ORDER BY with the space. With this clause, you can choose to order data by fields in a certain column. Because we want to sort by release date, we'll type Release_Date. ORDER BY clause sorts data in ascending order. If you run the query as it is right now, the movies will be sorted from oldest to the most recent release dates.#
+
+  ORDER BY  Release_Date DESC        
+  
+  #Then in the last line, we have the ORDER BY clause, which will sort the data we've chosen to filter by release dates in descending order. This means when we run the query, we'll only have comedy movies listed from newest releases to oldest releases. Let's run it and figure out if that's the case.#
+
+   
+
+    #also sort the release dates in the reverse order from the most recent dates to the oldest. To do this, just specify the descending order in the ORDER BY command written as DESC, D-E-S-C. #
+
+  #let's say we want to filter movies by genre so that we're only working with comedies. But we still want release dates to be sorted in descending order, from most recent to oldest films. We can do this with the WHERE clause. First, we'll check that the ORDER BY clause is always the last line. That makes sure that all the results of the query you're running are sorted by that clause. Then, we'll add a new line for the WHERE clause after FROM and before ORDER BY.  #
+
+#---------------------------------------------------------------------------------------------------------#
