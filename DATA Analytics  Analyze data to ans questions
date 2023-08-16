@@ -1,0 +1,15 @@
+# use the WHERE clause to filter the database and narrow down the list to movies in the comedy genre.#
+
+SELECT
+  *
+
+FROM
+  movie_data.movies
+
+  #To filter the movies by comedy, we're going to type WHERE, then list the condition, which is Genre.#
+
+WHERE
+
+   #Genre is a column in the dataset, and we only want to select rows where the cell in the Genre column exactly matches "Comedy." Since the data in the Genre column is a string format, we have to use single or double quotations when writing it. And keep in mind that ***capitalization matters here***, so we have to make sure that the letter casing matches the column name exactly. #
+
+  Genre = 'Comedy'
