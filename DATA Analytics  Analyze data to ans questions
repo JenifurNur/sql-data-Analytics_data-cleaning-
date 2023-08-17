@@ -44,3 +44,51 @@ AND Revenue > 300000000      #We'll filter for two conditions at once using the 
   #let's say we want to filter movies by genre so that we're only working with comedies. But we still want release dates to be sorted in descending order, from most recent to oldest films. We can do this with the WHERE clause. First, we'll check that the ORDER BY clause is always the last line. That makes sure that all the results of the query you're running are sorted by that clause. Then, we'll add a new line for the WHERE clause after FROM and before ORDER BY.  #
 
 #---------------------------------------------------------------------------------------------------------#
+
+  #------------------------------------***************************8-------------------------------#
+
+#****THE QUESRY THAT RETURNS ONLY TOP 10 COU8NTIES WITH THE HIGHEST BIRTH COUNT FOR 2018 ONLY........*#
+SELECT 
+  *
+FROM 
+  bigquery-public-data.sdoh_cdc_wonder_natality.county_natality 
+WHERE 
+  Year = '2018-01-01'
+ORDER BY
+  Births
+DESC
+LIMIT 
+  10
+ #------------------------------------***************************8-------------------------------#
+
+#>>>>>>>>>>>Temperature, wind speed and precepetationsnfor stations la..for everyday in 2020 i descending order by date and ascending order by station ID.........>>>>>>>>>>>>>>>.#
+
+SELECT
+  stn,
+  date,
+-- Use the IF function to replace 9999.9 values, which the dataset description explains is the default value when temperature is missing, with NULLs instead.
+  IF(
+     temp=9999.9,
+     NULL,
+     temp) AS temperature,
+-- Use the IF function to replace 999.9 values, which the dataset description explains is the default value when wind speed is missing, with NULLs instead.
+  IF(
+     wdsp="999.9",
+     NULL,
+     CAST(wdsp AS Float64)) AS wind_speed,
+-- Use the IF function to replace 99.99 values, which the dataset description explains is the default value when precipitation is missing, with NULLs instead.
+  IF(
+     prcp=99.99,
+     0,
+     prcp) AS precipitation
+FROM
+  `bigquery-public-data.noaa_gsod.gsod2020`
+WHERE
+  stn="725030" -- La Guardia
+  OR stn="744860" -- JFK
+ORDER BY
+  date DESC,
+  stn ASC
+
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<------------------------------------>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>#
+
